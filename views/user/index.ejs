@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/images/fav.png" type="image/x-icon" />
+  <!-- Font-Awesome Link -->
+  <script src="https://kit.fontawesome.com/658c99680d.js" crossorigin="anonymous"></script>
+  <title>Home - Koshigo</title>
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/preloader.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/banner.css">
+  <link rel="stylesheet" href="/css/section.css">
+  <link rel="stylesheet" href="/css/category.css">
+  <link rel="stylesheet" href="/css/presence.css">
+  <link rel="stylesheet" href="/css/trust.css">
+  <link rel="stylesheet" href="/css/contact.css">
+  <link rel="stylesheet" href="/css/product.css">
+  <link rel="stylesheet" href="/css/proslider.css">
+  <!-- Owl-Carousel Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+</head>
+
+<body class="loading">
+  <%- include('../partials/header.ejs') %>
+
+    <main>
+      <div class="banner-slider owl-carousel owl-theme">
+        <% for (let i=0; i < websiteDetails.banners.length; i++) { %>
+          <div class="slide" style="background-image: url('/images/<%= websiteDetails.banners[i] %>')"></div>
+          <% } %>
+      </div>
+      <section id="product_slider">
+        <h1>Deals of the Day</h1>
+        <div class="product_slider owl-carousel owl-theme">
+          <% products.forEach(product=> { %>
+            <div class="product">
+              <a class="wishlist" href="/wishlist/add/<%= product._id %>"><i class="far fa-heart"></i></a>
+              <a class="product_link" href="/product/<%= product._id %>" target="_blank">
+                <div class="img" style="background-image: url('/images/<%= product.image[0] %>');"></div>
+                <h2>
+                  <%= product.title %>
+                </h2>
+                <p><span class="one">₹ <%= product.price %></span> <strike>₹<%= product.mrp %></strike> <span
+                    class="three">Save
+                    ₹<%= product.mrp - product.price %> (<%= Math.round((product.mrp - product.price)/product.mrp*100)
+                        %>%)</span></p>
+              </a>
+              <a class="cart" href="/cart/add/<%= product._id %>">
+                <i class="fas fa-cart-plus"></i>
+                <span>Add to Cart</span>
+              </a>
+            </div>
+            <% }) %>
+        </div>
+      </section>
+      <section id="categories">
+        <h1>Top Categories</h1>
+        <div class="categories">
+          <% websiteDetails.categories.forEach(category=> { %>
+            <a href="/search?q=<%= category.name.toLowerCase() %>">
+              <div class="img" style="background-image: url('/images/<%= category.pic %>');"></div>
+              <p>
+                <%= category.name %>
+              </p>
+            </a>
+            <% }) %>
+        </div>
+      </section>
+      <section id="products">
+        <h1>Our Products</h1>
+        <div class="products">
+
+          <% products.forEach(product=> { %>
+
+
+            <div class="product">
+              <a class="wishlist" href="/wishlist/add/<%= product._id %>"><i class="far fa-heart"></i></a>
+              <a class="product_link" href="/product/<%= product._id %>" target="_blank">
+                <div class="img" style="background-image: url('/images/<%= product.image[0] %>');"></div>
+                <h2>
+                  <%= product.title %>
+                </h2>
+                <p><span class="one">₹ <%= product.price %></span> <strike>₹<%= product.mrp %></strike> <span
+                    class="three">Save
+                    ₹<%= product.mrp - product.price %> (<%= Math.round((product.mrp - product.price)/product.mrp*100)
+                        %>%)</span></p>
+              </a>
+              <a class="cart" href="/cart/add/<%= product._id %>">
+                <i class="fas fa-cart-plus"></i>
+                <span>Add to Cart</span>
+              </a>
+            </div>
+            <% }) %>
+        </div>
+      </section>
+      <section id="contact">
+        <h1>Contact Us</h1>
+        <div class="contact">
+          <iframe class="left"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57435.5170338264!2d86.56473204640406!3d25.87869749730588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ee3d95ae7b8dcf%3A0x90bcd0f521fe86e5!2sSaharsa%2C%20Bihar!5e0!3m2!1sen!2sin!4v1624897359534!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <form action="/contact" method="POST" class="right">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Enter your Name">
+            <label>Your Email</label>
+            <input type="email" name="email" placeholder="Enter your Email">
+            <label>Your Phone Number</label>
+            <input type="tel" name="phone" placeholder="Enter your Phone Number">
+            <label>Message</label>
+            <textarea name="message" placeholder="Your message"></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+      </section>
+      <section id="presence">
+        <h1>Our Presence</h1>
+        <div class="presence">
+          <a href="<%= websiteDetails.amazon %>" target="_blank" style="background-image: url(/images/amazon.png);"></a>
+          <a href="<%= websiteDetails.flipkart %>" target="_blank"
+            style="background-image: url(/images/flipkart.jpg);"></a>
+        </div>
+      </section>
+      <section id="trust">
+        <a href="#">
+          <img src="/images/secure-pay-icon.png" alt="">
+          <h2>100% SECURE PAYMENTS</h2>
+          <p>Moving your card details to a much more secured place</p>
+        </a>
+        <a href="#">
+          <img src="/images/trust-icon.png" alt="">
+          <h2>TRUSTPAY</h2>
+          <p>100% Payment Protection. Easy Return Policy</p>
+        </a>
+        <a href="#">
+          <img src="/images/help-icon.png" alt="">
+          <h2>HELP CENTER</h2>
+          <p>Got a question? Look no further. Browse our FAQs or submit your query here.</p>
+        </a>
+      </section>
+
+    </main>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="/js/banner.js"></script>
+    <script src="/js/proslider.js"></script>
+
+    <%- include('../partials/footer.ejs') %>
