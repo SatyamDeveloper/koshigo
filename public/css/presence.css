@@ -1,0 +1,57 @@
+#presence .presence {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#presence .presence a {
+  width: 50%;
+  height: 20rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+}
+
+#presence .presence a:hover {
+  opacity: 1;
+}
+
+@media screen and (max-width: 1190px) {
+  #presence .presence a {
+    height: 15rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #presence .presence a {
+    height: 10rem;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  #presence .presence {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #presence .presence a {
+    width: 100%;
+    height: 15rem;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  #presence .presence a {
+    height: 10rem;
+  }
+}
+/*# sourceMappingURL=presence.css.map */

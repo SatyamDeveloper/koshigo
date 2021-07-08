@@ -1,0 +1,24 @@
+#prodesc {
+  background: #fff;
+  font-family: "Cabin", sans-serif;
+  margin: 0;
+  border-top: 1px solid #ccc;
+}
+
+#prodesc h3 {
+  margin: 3px 0 10px 0;
+  color: green;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#prodesc p {
+  font-size: 15px;
+}
+
+#prodesc .description {
+  width: 95%;
+  font-size: 15px;
+  margin: 10px auto;
+}
+/*# sourceMappingURL=prodesc.css.map */
