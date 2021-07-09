@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/images/fav.png" type="image/x-icon" />
+  <!-- Font-Awesome Link -->
+  <script src="https://kit.fontawesome.com/658c99680d.js" crossorigin="anonymous"></script>
+  <title>
+    <%= product.title %>
+  </title>
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/preloader.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/section.css">
+  <link rel="stylesheet" href="/css/trust.css">
+  <link rel="stylesheet" href="/css/proslider.css">
+  <link rel="stylesheet" href="/css/propage.css">
+  <link rel="stylesheet" href="/css/prodetails.css">
+  <link rel="stylesheet" href="/css/prodesc.css">
+  <!-- Owl-Carousel Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+</head>
+
+<body class="loading">
+  <%- include('../partials/header.ejs') %>
+    <main>
+      <section id="propage">
+        <div class="left">
+          <div class="all_img">
+            <% for( let i=0; i < product.image.length; i++ ) { %>
+              <div class="img" style="background-image: url('/images/<%= product.image[i] %>');"></div>
+              <% } %>
+          </div>
+          <div class="active_img" style="background-image: url('/images/<%= product.image[0] %>');"></div>
+        </div>
+        <div class="middle">
+          <h2>
+            <%= product.title %>
+          </h2>
+          <div class="price">
+            <p class="name">M.R.P.:</p>
+            <p class="value strike">₹ <%= product.mrp %>.00</p>
+            <p class="name">Price:</p>
+            <p class="value big">₹ <%= product.price %>.00</p>
+            <p class="name">You Save:</p>
+            <p class="value off">₹ <%= product.mrp - product.price %>.00 (<%= Math.round((product.mrp -
+                  product.price)/product.mrp*100) %>%) <span>Inclusive of all taxes</span></p>
+          </div>
+          <div class="special">
+            <div class="box">
+              <img src="/images/non-returnable.png">
+              <p>Non Returnable</p>
+            </div>
+            <div class="box">
+              <img src="/images/speed-deliver.png">
+              <p>Speed Delivered</p>
+            </div>
+            <div class="box">
+              <img src="/images/no-contact-delivery.png">
+              <p>Contacless Delivery</p>
+            </div>
+          </div>
+          <div class="res_purchase">
+            <div class="qty">
+              <label for="">Quantity:</label>
+              <select name="qty" value="1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <a href="/cart/add/<%= product._id %>"><i class="fas fa-cart-plus"></i>Add to Cart</a>
+            <a href="/wishlist/add/<%= product._id %>">Add to Wish List</a>
+          </div>
+          <div class="line"></div>
+          <p class="life">Best Before: <%= product.bestbefore.toLocaleDateString() %>
+          </p>
+          <p class="stock">In Stock.</p>
+          <p class="size">Size: <b>
+              <%= product.size %>
+            </b></p>
+          <div class="type">
+            <div class="square">
+              <div class="circle"></div>
+            </div>
+            <p>
+              This is a Vegeterian product</p>
+          </div>
+          <ul>
+            <% product.bulletpoint.forEach(bullet=> { %>
+              <li>
+                <%= bullet %>
+              </li>
+              <% }) %>
+          </ul>
+        </div>
+
+        <div class="right">
+          <div class="qty">
+            <label for="">Quantity:</label>
+            <select name="qty" value="1">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <a href="/cart/add/<%= product._id %>"><i class="fas fa-cart-plus"></i>Add to Cart</a>
+          <a href="/wishlist/add/<%= product._id %>">Add to Wish List</a>
+        </div>
+      </section>
+      <section id="prodetails">
+        <h3>Product information</h3>
+        <p>Size: <b>
+            <%= product.size %>
+          </b></p>
+        <div class="details">
+          <div class="one">
+            <h4>Technical Details</h4>
+            <div class="line"></div>
+            <table>
+              <tr>
+                <td>Package Dimensions</td>
+                <td>‎<%= product.length %> x <%= product.breadth %> x <%= product.height %>
+                        <%= product.dimensiontype %>; <%= product.netqty %>
+                            <%= product.qtytype.replace(/^\w/, c=> c.toUpperCase()) %>s</td>
+              </tr>
+              <tr>
+                <td>Net Quantity</td>
+                <td>
+                  <%= product.netqty %>.0 <%= product.qtytype %>
+                </td>
+              </tr>
+              <tr>
+                <td>Brand</td>
+                <td>
+                  <%= product.brand %>
+                </td>
+              </tr>
+              <tr>
+                <td>Special Feature</td>
+                <td>‎No Preservatives</td>
+              </tr>
+              <tr>
+                <td>Packer</td>
+                <td>
+                  <%= product.packer %>
+                </td>
+              </tr>
+              <tr>
+                <td>Item Weight</td>
+                <td>
+                  <%= product.size %>
+                </td>
+              </tr>
+              <tr>
+                <td>Country of Origin</td>
+                <td>
+                  <%= product.country %>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="one">
+            <h4>Additional Information</h4>
+            <div class="line"></div>
+            <table>
+              <tr>
+                <td>ASIN</td>
+                <td>
+                  <%= product._id %>
+                </td>
+              </tr>
+              <tr>
+                <td>Customer Reviews</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Date First Available</td>
+                <td>
+                  <%= product.createdAt.toLocaleDateString() %>
+                </td>
+              </tr>
+              <tr>
+                <td>Manufacturer</td>
+                <td>
+                  <%= product.manufacturer %>
+                </td>
+              </tr>
+              <tr>
+                <td>FSSAI</td>
+                <td>
+                  <%= product.fssai %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section id="prodesc">
+        <h3>Product information</h3>
+        <p>Size: <b>
+            <%= product.size %>
+          </b></p>
+        <div class="description">
+          <%= product.description %>
+        </div>
+      </section>
+      <section id="product_slider">
+        <h1>Related Products</h1>
+        <div class="product_slider owl-carousel owl-theme">
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/1.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Seeds Pop/Gorgon Nuts Kernel Puffed Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/peanuts.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/c1.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Seeds Pop/Gorgon Nuts Kernel Puffed Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/1.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Seeds Pop/Gorgon Nuts Kernel Puffed Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/1.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Seeds Pop/Gorgon Nuts Kernel Puffed Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/1.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Seeds Pop/Gorgon Nuts Kernel Puffed Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+          <div class="product">
+            <a class="wishlist" href="/wishlist/add/id"><i class="far fa-heart"></i></a>
+            <a class="product_link" href="#" target="_blank">
+              <div class="img" style="background-image: url(/images/1.jpg);"></div>
+              <h2>Koshigo Jumbo Handpicked Lotus Seeds Pop/Gorgon Nuts Kernel Puffed Phool Makhana (225 Grams)</h2>
+              <p><span class="one">₹ 299</span> <strike>₹499</strike> <span class="three">Save
+                  ₹200 (40%)</span></p>
+            </a>
+            <a class="cart" href="/cart/add/id">
+              <i class="fas fa-cart-plus"></i>
+              <span>Add to Cart</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="trust">
+        <a href="#">
+          <img src="/images/secure-pay-icon.png" alt="">
+          <h2>100% SECURE PAYMENTS</h2>
+          <p>Moving your card details to a much more secured place</p>
+        </a>
+        <a href="#">
+          <img src="/images/trust-icon.png" alt="">
+          <h2>TRUSTPAY</h2>
+          <p>100% Payment Protection. Easy Return Policy</p>
+        </a>
+        <a href="#">
+          <img src="/images/help-icon.png" alt="">
+          <h2>HELP CENTER</h2>
+          <p>Got a question? Look no further. Browse our FAQs or submit your query here.</p>
+        </a>
+      </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="/js/proslider.js"></script>
+    <%- include('../partials/footer.ejs') %>

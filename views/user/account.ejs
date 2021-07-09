@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/images/fav.png" type="image/x-icon" />
+  <!-- Font-Awesome Link -->
+  <script src="https://kit.fontawesome.com/658c99680d.js" crossorigin="anonymous"></script>
+  <title>My Account - Koshigo</title>
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/preloader.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/section.css">
+  <link rel="stylesheet" href="/css/account.css">
+
+</head>
+
+<body class="loading">
+  <%- include('../partials/header.ejs') %>
+    <main>
+      <section id="account">
+        <div class="head">
+          <i class="fas fa-user-circle"></i>
+          <h2>
+            <%= user.name%>
+          </h2>
+          <p>
+            <%= user.email %>
+          </p>
+        </div>
+        <div class="body">
+          <h2>Your Account</h2>
+          <div class="links">
+            <a href="#">
+              <img src="/images/box-icon.png">
+              <div class="brief">
+                <h3>Your Orders</h3>
+                <p>Track and buy things again</p>
+              </div>
+            </a>
+            <a href="#">
+              <img src="/images/lock-icon.png">
+              <div class="brief">
+                <h3>Login & security</h3>
+                <p>Edit login, name, and mobile number</p>
+              </div>
+            </a>
+            <a href="#">
+              <img src="/images/cart-icon.png">
+              <div class="brief">
+                <h3>Your Cart</h3>
+                <p>See & Buy the products</p>
+              </div>
+            </a>
+            <a href="#">
+              <img src="/images/wish-icon.png">
+              <div class="brief">
+                <h3>Your Wishlist</h3>
+                <p>Watch your favourites and buy them</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <%- include('../partials/footer.ejs') %>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/images/fav.png" type="image/x-icon" />
+  <!-- Font-Awesome Link -->
+  <script src="https://kit.fontawesome.com/658c99680d.js" crossorigin="anonymous"></script>
+  <title>Login - Koshigo</title>
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/preloader.css" />
+  <link rel="stylesheet" href="/css/form.css" />
+</head>
+
+<body>
+  <div id="preloader">
+    <div class="loader">
+      <div class="ball"></div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/js/preloader.js"></script>
+  <section id="form">
+    <div class="box">
+      <div class="left"
+        style="background-image: linear-gradient(90deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/images/login.jpg);">
+        <img src="/images/fav.png" alt="koshigo-logo">
+        <h1>We're happy to see you.</h1>
+        <div class="foot_links">
+          <a href="/facebook"><i class="fab fa-facebook"></i></a>
+          <a href="/twitter"><i class="fab fa-twitter-square"></i></a>
+          <a href="/youtube"><i class="fab fa-youtube"></i></a>
+          <a href="/whatsapp"><i class="fab fa-whatsapp-square"></i></a>
+        </div>
+      </div>
+      <form action="/login" method="POST" class="right">
+        <label>Email</label>
+        <input type="email" name="email">
+        <label>Password</label>
+        <input type="password" name="password">
+        <button type="submit">Continue</button>
+        <p>Don't have an account? <a href="/signup">Register</a></p>
+      </form>
+    </div>
+  </section>
+</body>
+
+</html>
